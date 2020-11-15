@@ -1,0 +1,14 @@
+Singleton Finnhub client
+	Get/update data:
+		Candles
+		Symbols
+		Company
+
+Menusystem
+	Add Symbol and get data from Finnhub
+	Update candles since X date
+	??
+
+Define "Report"
+
+Remove hardcoded API key

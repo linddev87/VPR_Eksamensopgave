@@ -1,11 +1,12 @@
 ﻿using App.Enums;
+using App.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.NewFolder
+namespace App.Model
 {
-    class Symbol
+    abstract class Symbol
     {
         public Symbol(string description, string displaySymbol, string uniqueSymbol)
         {

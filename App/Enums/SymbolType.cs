@@ -8,7 +8,6 @@ namespace App.Enums
     {
         Stock,
         Forex,
-        Crypto,
-        BaseSymbol
+        Crypto
     }
 }

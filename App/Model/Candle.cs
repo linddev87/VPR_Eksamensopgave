@@ -1,8 +1,9 @@
-﻿using System;
+﻿using App.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Enums
+namespace App.Model
 {
     class Candle
     {  

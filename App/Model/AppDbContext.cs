@@ -1,4 +1,4 @@
-﻿using App.NewFolder;
+﻿using App.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,6 @@ namespace App.Enums
         {
             modelBuilder.Entity<Symbol>()
                 .HasDiscriminator<SymbolType>("SymbolType")
-                .HasValue<Symbol>(SymbolType.BaseSymbol)
                 .HasValue<StockSymbol>(SymbolType.Stock);
         }
     }
