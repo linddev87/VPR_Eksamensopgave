@@ -1,8 +1,6 @@
 ﻿using App.Enums;
-using App.Model;
 using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace App.Model
 {
@@ -42,5 +40,22 @@ namespace App.Model
         public new AssetType AssetType = AssetType.Stock;
         public string Type { get; private set; }
         public string Currency { get; private set; }
+    }
+
+    public class Crypto : Asset
+    {
+        public Crypto(string description, string displaySymbol, string symbol) : base(description, displaySymbol, symbol)
+        {
+
+        }
+        public new AssetType AssetType = AssetType.Crypto;
+    }
+    public class Forex : Asset
+    {
+        public Forex(string description, string displaySymbol, string symbol) : base(description, displaySymbol, symbol)
+        {
+
+        }
+        public new AssetType AssetType = AssetType.Forex;
     }
 }
