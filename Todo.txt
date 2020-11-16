@@ -12,3 +12,10 @@ Menusystem
 Define "Report"
 
 Remove hardcoded API key
+Remove hardcoded connection string
+
+
+Watchlist
+Get candles for watchlist
+Show report for stock
+Show key figures for watchlist?

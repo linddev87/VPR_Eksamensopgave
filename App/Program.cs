@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using App.Model;
 using App.Services;
+using Newtonsoft.Json;
 
 namespace App
 {
@@ -9,15 +12,10 @@ namespace App
     {
         static async Task Main(string[] args)
         {
+            await DbMaintenance.UpdateStocks("US");
 
-            //using var client = new HttpClient();
-            //var content = await client.GetStringAsync("http://webcode.me");
-
-            //Console.WriteLine(content);
-
-            var res = await FinnhubClient.Instance.GetSymbolsFromExchange("US");
-
-            Console.WriteLine(res);
+            
+            Console.WriteLine("Hello");
         }
     }
 }

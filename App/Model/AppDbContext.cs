@@ -1,15 +1,15 @@
-﻿using App.Model;
+﻿using App.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Enums
+namespace App.Model
 {
-    class AppDbContext : DbContext
+    public partial class AppDbContext : DbContext
     {
-        public DbSet<Symbol> Symbols { get; set; }
-        public DbSet<StockSymbol> StockSymbols { get; set; }
+        public DbSet<Asset> Assets { get; set; }
+        public DbSet<Stock> Stocks { get; set; }
 
         public DbSet<Candle> Candles { get; set; }
 
@@ -20,9 +20,12 @@ namespace App.Enums
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Symbol>()
-                .HasDiscriminator<SymbolType>("SymbolType")
-                .HasValue<StockSymbol>(SymbolType.Stock);
+            modelBuilder.Entity<Asset>()
+                .HasDiscriminator<AssetType>("SymbolType")
+                .HasValue<Stock>(AssetType.Stock);
+
+            modelBuilder.Entity<Asset>()
+                .HasKey(a => a.Id);
         }
     }
 }

@@ -2,22 +2,22 @@
 
 namespace App.Migrations
 {
-    public partial class AddedCandleClass3 : Migration
+    public partial class ReplacedId2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "_createdDate",
-                table: "Candles",
-                newName: "CreatedDate");
+                name: "ShortId",
+                table: "Assets",
+                newName: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "CreatedDate",
-                table: "Candles",
-                newName: "_createdDate");
+                name: "Id",
+                table: "Assets",
+                newName: "ShortId");
         }
     }
 }

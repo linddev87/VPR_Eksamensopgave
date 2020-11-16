@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App.Enums
 {
-    enum SymbolType
+    public enum AssetType
     {
         Stock,
         Forex,
