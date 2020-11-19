@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using App.Model;
-using App.Services;
-using Newtonsoft.Json;
+﻿
+
+using App.UI;
 
 namespace App
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
-            var menu = new Menu();            
-            Console.WriteLine("Hello");
+            UserInterface.Init();    
         }
     }
 }

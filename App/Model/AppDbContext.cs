@@ -10,7 +10,6 @@ namespace App.Model
     {
         public DbSet<Asset> Assets { get; set; }
         public DbSet<Stock> Stocks { get; set; }
-
         public DbSet<Candle> Candles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
