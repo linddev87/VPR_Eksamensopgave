@@ -12,9 +12,7 @@ namespace App
     {
         static async Task Main(string[] args)
         {
-            await DbMaintenance.UpdateStocks("US");
-
-            
+            var menu = new Menu();            
             Console.WriteLine("Hello");
         }
     }
