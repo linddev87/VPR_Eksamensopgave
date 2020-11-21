@@ -25,6 +25,9 @@ namespace App.Model
 
             modelBuilder.Entity<Asset>()
                 .HasKey(a => a.Id);
+
+            modelBuilder.Entity<Candle>()
+                .HasKey(c => c.Id);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace App.Model
         {
 
         }
+
         public new AssetType AssetType = AssetType.Forex;
     }
 }

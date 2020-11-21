@@ -25,6 +25,8 @@ namespace App.Factories
                     return new AssetShortlistRequest(parameters);
                 case "showshortlist":
                     return new ShowShortlistRequest();
+                case "updatedatabase":
+                    return new UpdateDatabaseRequest();
                 default:
                     return new InvalidRequest();
             }
