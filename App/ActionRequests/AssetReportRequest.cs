@@ -4,7 +4,6 @@ namespace App.Controllers
 {
     internal class AssetReportRequest : IActionRequest
     {
-        public string Action { get; private set; }
         public string[] Params { get; private set; }
         
         public AssetReportRequest()

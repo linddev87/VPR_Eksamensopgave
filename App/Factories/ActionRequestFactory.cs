@@ -1,4 +1,5 @@
-﻿using App.Controllers;
+﻿using App.ActionRequests;
+using App.Controllers;
 using App.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,10 @@ namespace App.Factories
                     return new AssetLookupRequest(parameters);
                 case "assetreport":
                     return new AssetReportRequest(parameters);
+                case "shortlist":
+                    return new AssetShortlistRequest(parameters);
+                case "showshortlist":
+                    return new ShowShortlistRequest();
                 default:
                     return new InvalidRequest();
             }

@@ -1,21 +1,6 @@
-Singleton Finnhub client
-	Get/update data:
-		Candles
-		Symbols
-		Company
+Implement data for AssetReport:
+	Candles
+	CompanyInfo
+	Recommendations?
 
-Menusystem
-	Add Symbol and get data from Finnhub
-	Update candles since X date
-	??
-
-Define "Report"
-
-Remove hardcoded API key
-Remove hardcoded connection string
-
-
-Watchlist
-Get candles for watchlist
-Show report for stock
-Show key figures for watchlist?
+Define and implement AssetReport

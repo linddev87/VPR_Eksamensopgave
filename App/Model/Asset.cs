@@ -11,51 +11,40 @@ namespace App.Model
             Description = description;
             DisplaySymbol = displaySymbol;
             Symbol = symbol;
+            Shortlisted = false;
         }
 
-        public Guid Guid { get; private set; } = Guid.NewGuid();
+        public string Id
+        {
+            get
+            {
+                return $"{Exchange}-{Symbol}";
+            }
+            private set { }
+        }
         public DateTime CreatedDate { get; private set; } = DateTime.Now;
         public virtual AssetType AssetType { get; protected set; }
         public string Description { get; private set; }
         public string DisplaySymbol { get; private set; }
         public string Symbol { get; private set; }
         public string Exchange { get; set; }
-        public string Id 
-        { 
-            get
+        public bool Shortlisted { get; private set; }
+
+        public void SetShortlistedStatus(bool shortlist)
+        {
+            if (shortlist)
             {
-                return $"{Exchange}-{Symbol}";
-            } 
-            private set { }
+                Shortlisted = true;
+            }
+            else
+            {
+                Shortlisted = false;
+            }
         }
-    }
 
-    public class Stock : Asset
-    {
-        public Stock(string description, string displaySymbol, string symbol, string type, string currency) : base(description, displaySymbol, symbol)
+        public override string ToString()
         {
-            Type = type;
-            Currency = currency;
+            return $"{Description} ({Symbol})";
         }
-        public new AssetType AssetType = AssetType.Stock;
-        public string Type { get; private set; }
-        public string Currency { get; private set; }
-    }
-
-    public class Crypto : Asset
-    {
-        public Crypto(string description, string displaySymbol, string symbol) : base(description, displaySymbol, symbol)
-        {
-
-        }
-        public new AssetType AssetType = AssetType.Crypto;
-    }
-    public class Forex : Asset
-    {
-        public Forex(string description, string displaySymbol, string symbol) : base(description, displaySymbol, symbol)
-        {
-
-        }
-        public new AssetType AssetType = AssetType.Forex;
     }
 }

@@ -6,11 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace App.Controllers
+namespace App.ActionRequests
 {
     internal class AssetLookupRequest : IActionRequest
     {
-        public string Action { get; private set; }
         public string[] Params { get; private set; }
 
         public AssetLookupRequest()

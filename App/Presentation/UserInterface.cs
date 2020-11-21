@@ -24,7 +24,7 @@ namespace App.UI
 
         public static string GetUserInput()
         {
-            Console.WriteLine("What would you like to do? (Type 'help' for options)");
+            Console.WriteLine("What would you like to do? (Type 'help' for options)\n");
             return Console.ReadLine();
         }
     }

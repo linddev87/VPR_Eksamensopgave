@@ -1,11 +1,10 @@
 ﻿using App.Interfaces;
 using System;
 
-namespace App.Controllers
+namespace App.ActionRequests
 {
     internal class HelpRequest : IActionRequest
     {
-        public string Action { get; private set; }
         public string[] Params { get; private set; }
 
         public HelpRequest()
@@ -31,7 +30,7 @@ namespace App.Controllers
             }
             else
             {
-                return $"Available commands: \n   'help'\n   'assetlookup {{symbol}}'\n   'assetreport {{symbol}}'\n   'updatedatabase'";
+                return $"Available commands:\n   help\n   assetlookup {{symbol}}\n   assetreport {{symbol}}\n   shortlist add {{symbol}}\n   shortlist remove {{symbol}}\n   updatedatabase";
             }
         }
     }

@@ -5,7 +5,6 @@ namespace App.Controllers
 {
     public class InvalidRequest : IActionRequest
     {
-        public string Action { get; private set; }
         public string[] Params { get; private set; }
         public InvalidRequest()
         {
