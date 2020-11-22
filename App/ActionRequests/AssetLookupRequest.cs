@@ -40,12 +40,20 @@ namespace App.ActionRequests
                 List<Asset> assets = LookupAssets();
                 output = "";
 
-                foreach (var asset in assets)
+                if(assets.Count > 0)
                 {
-                    output += $"{asset.Description} ({asset.Symbol}) \n";
+                    foreach (var asset in assets)
+                    {
+                        output += $"{asset.Description} ({asset.Symbol}) \n";
+                    }
                 }
+                else
+                {
+                    output = "Couldn't find any assets matching your input.";
+                }
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 output = "Something went wrong" + e.Message;
             }
@@ -66,8 +74,8 @@ namespace App.ActionRequests
             foreach (var param in Params)
             {
                 var assetsFound = context.Assets.Where(a => a.Description.ToLower().Contains(param.ToLower()));
-                
-                foreach(var asset in assetsFound)
+
+                foreach (var asset in assetsFound)
                 {
                     assets.Add(asset);
                 }

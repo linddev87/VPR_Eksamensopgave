@@ -1,5 +1,4 @@
-﻿using App.Controllers;
-using App.Factories;
+﻿using App.Factories;
 using App.Interfaces;
 using System;
 
@@ -25,8 +24,8 @@ namespace App.UI
                 Message(result);
 
                 Init();
-            } 
-            catch(Exception e)
+            }
+            catch (Exception e)
             {
                 Message("Something went wrong: " + e.Message);
             }

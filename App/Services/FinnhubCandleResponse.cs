@@ -1,10 +1,12 @@
 ﻿using App.Model;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 
 namespace App.Services
 {
+    /// <summary>
+    /// Transport class used to convert Finnhub json response to Candles
+    /// </summary>
     internal class FinnhubCandleResponse
     {
         [JsonProperty("o")]

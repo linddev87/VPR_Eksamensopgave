@@ -3,8 +3,6 @@ using App.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
 
 namespace App.ActionRequests
 {
@@ -33,11 +31,11 @@ namespace App.ActionRequests
         {
             List<Candle> candles = new List<Candle>();
 
-            foreach(var symbol in Symbols)
+            foreach (var symbol in Symbols)
             {
                 List<Candle> toAdd = GetCandlesForSymbol(symbol);
 
-                foreach(var candle in toAdd)
+                foreach (var candle in toAdd)
                 {
                     candles.Add(candle);
                 }
@@ -115,8 +113,8 @@ namespace App.ActionRequests
         public string MonthlyReport()
         {
             string result = HeaderString();
-            
-            foreach(var symbol in Symbols)
+
+            foreach (var symbol in Symbols)
             {
                 List<decimal> closingAverages = GetClosingAverages(symbol);
 
@@ -137,14 +135,14 @@ namespace App.ActionRequests
         private string GetReportString(string symbol, List<decimal> closingAverages)
         {
             Stock asset;
-            using(var context = new AppDbContext())
+            using (var context = new AppDbContext())
             {
                 asset = (Stock)context.Assets.Where(a => a.Symbol == symbol.ToUpper()).FirstOrDefault();
             }
 
             string result = StringResize($"{symbol.ToUpper()}({asset.Currency})", 20);
 
-            foreach(var avg in closingAverages)
+            foreach (var avg in closingAverages)
             {
                 result += StringResize(avg.ToString());
             }
@@ -158,10 +156,10 @@ namespace App.ActionRequests
         /// <param name="input">String to resize</param>
         /// <param name="length">Length to resize to</param>
         /// <returns>Resized string</returns>
-        private string StringResize(string input, int length = 12 )
+        private string StringResize(string input, int length = 12)
         {
             string output = "";
-            if(input.Length > length)
+            if (input.Length > length)
             {
                 output = input.Substring(0, length - 4) + "...";
             }
@@ -191,7 +189,7 @@ namespace App.ActionRequests
             DateTime currMonthBeginning = DateTime.UtcNow.Date.AddDays(DateTime.UtcNow.Date.Day * -1);
 
             //Go back 12 months and calculate the average closing price for each month
-            for(var i = -12; i <= 0; i++)
+            for (var i = -12; i <= 0; i++)
             {
                 DateTime beginningOfMonth = currMonthBeginning.AddMonths(i).AddDays(1);
                 DateTime endOfMonth = currMonthBeginning.AddMonths(i + 1);
@@ -200,7 +198,7 @@ namespace App.ActionRequests
                 List<Candle> candlesFromMonth = Candles.Where(c => c.Symbol == symbol.ToUpper()).Where(c => c.Timestamp > beginningOfMonth).Where(c => c.Timestamp < endOfMonth).ToList();
 
                 //If the query returned any data, calculate the average and add it to the list of averages.
-                if(candlesFromMonth.Count > 0)
+                if (candlesFromMonth.Count > 0)
                 {
                     decimal averageClose = candlesFromMonth.Select(c => c.ClosingPrice).Average();
                     decimal roundedAverage = Math.Round(averageClose, 2);

@@ -44,7 +44,7 @@ namespace App.ActionRequests
         {
             string shortlistString = "";
 
-            if(assets.Count > 0)
+            if (assets.Count > 0)
             {
                 shortlistString = "Shortlist:\n";
 

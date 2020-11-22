@@ -1,10 +1,10 @@
 ﻿using App.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Model
 {
+    /// <summary>
+    /// Derived class to represent Crypto symbols from Finnhub
+    /// </summary>
     public class Crypto : Asset
     {
         public Crypto(string description, string displaySymbol, string symbol) : base(description, displaySymbol, symbol)

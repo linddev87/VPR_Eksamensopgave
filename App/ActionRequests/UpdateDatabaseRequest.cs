@@ -1,11 +1,6 @@
 ﻿using App.Interfaces;
-using App.Model;
 using App.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace App.ActionRequests
 {
@@ -31,7 +26,7 @@ namespace App.ActionRequests
 
                 return "The database update was initiated.";
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return $"Something went wrong with your request: {e.Message}";
             }

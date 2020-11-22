@@ -4,6 +4,9 @@ using System;
 
 namespace App.Model
 {
+    /// <summary>
+    /// Abstract base class for the 3 asset types.
+    /// </summary>
     public abstract class Asset
     {
         public Asset(string description, string displaySymbol, string symbol)

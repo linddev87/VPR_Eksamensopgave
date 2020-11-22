@@ -1,8 +1,5 @@
 ﻿using App.Enums;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Model
 {
@@ -17,6 +14,7 @@ namespace App.Model
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //Set ENV variables i App -> Properties -> Debug
             string connectionString = System.Environment.GetEnvironmentVariable("VPR_Eksamensopgave_ConnectionString");
             optionsBuilder.UseSqlServer(connectionString);
         }

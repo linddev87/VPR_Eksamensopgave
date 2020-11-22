@@ -32,7 +32,7 @@ namespace App.ActionRequests
         private string GetHelpString()
         {
             // The idea is to add more specific help items at a later point if the user has supplied arguments to the help command. 
-            if(Params.Length > 1)
+            if (Params.Length > 1)
             {
                 return $"We couldn't find a specific help item for '{Params[1]}'. Type 'help' for a list of options.";
             }

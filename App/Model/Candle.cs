@@ -1,12 +1,15 @@
 ﻿using App.Enums;
-using Newtonsoft.Json;
 using System;
 
 namespace App.Model
 {
+    /// <summary>
+    /// Universal candle class for the 3 AssetTypes
+    /// </summary>
     public class Candle
     {
-        public string Id { 
+        public string Id
+        {
             get
             {
                 return $"{Symbol}-{Timestamp}";
