@@ -30,7 +30,7 @@ namespace App.ActionRequests
             }
             else
             {
-                return $"Available commands:\n   help\n   assetlookup {{symbol}}\n   assetreport {{symbol}}\n   shortlist add {{symbol}}\n   shortlist remove {{symbol}}\n   updatedatabase";
+                return $"Available commands:\n   help\n   assetlookup {{symbol}}\n   assetreport {{symbol}}\n   assetreport shortlist\n   shortlist add {{symbol}}\n   shortlist remove {{symbol}}\n   showshortlist\n   updatedatabase";
             }
         }
     }

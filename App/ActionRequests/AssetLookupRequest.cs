@@ -34,7 +34,7 @@ namespace App.ActionRequests
 
             foreach(var asset in assets)
             {
-                output += asset.Description + "\n";
+                output += $"{asset.Description} ({asset.Symbol}) \n";
             }
 
             return output;
@@ -48,8 +48,12 @@ namespace App.ActionRequests
 
             foreach (var param in Params)
             {
-                var asset = context.Assets.Where(a => a.Symbol == param).FirstOrDefault();
-                assets.Add(asset);
+                var assetsFound = context.Assets.Where(a => a.Description.ToLower().Contains(param.ToLower()));
+                
+                foreach(var asset in assetsFound)
+                {
+                    assets.Add(asset);
+                }
             }
 
             return assets;

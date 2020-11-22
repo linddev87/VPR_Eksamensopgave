@@ -11,14 +11,12 @@ namespace App.Services
     public static class DbMaintenanceService
 
     {
-        internal static async Task Run()
+        internal static void Run()
         {
-            string result = await UpdateDbForShortlist();
-
-            UserInterface.Message(result);
+            string result = UpdateDbForShortlist();
         }
 
-        private static async Task<string> UpdateDbForShortlist()
+        private static string UpdateDbForShortlist()
         {
             List<Asset> shortlist = GetShortlist(); 
 
@@ -26,25 +24,54 @@ namespace App.Services
                 await UpdateDbForSymbol(a);
             });
 
-            return "Db update complete";
+            return "";
         }
 
         private static List<Asset> GetShortlist()
         {
              var context = new AppDbContext();
-
-             return (from asset in context.Assets
-                     where asset.Shortlisted == true
-                     select asset).ToList();
+             List<Asset> shortlist = (from asset in context.Assets
+                                        where asset.Shortlisted == true
+                                        select asset).ToList();
+            return shortlist;
         }
 
         private static async Task UpdateDbForSymbol(Asset asset)
         {
-            long from = 1604188800;
-            long to = 1605989685;
+            long to = ConvertToUnix(DateTime.UtcNow.Date);
+            long from;
+
+            Candle latestCandle = GetLatestCandleForAsset(asset.Symbol);
+            
+            if(latestCandle == null)
+            {
+                from = ConvertToUnix(new DateTime(2020, 1, 1).Date);
+            }
+            else
+            {
+                from = ConvertToUnix(latestCandle.Timestamp);
+            }
+
             List<Candle> newCandles = await FinnhubClient.Instance.GetCandlesForSymbol(asset, from, to);
 
             CommitNewCandlesToDb(newCandles);
+        }
+
+        private static long ConvertToUnix(DateTime date)
+        {
+            return ((DateTimeOffset)date).ToUnixTimeSeconds();
+        }
+
+        private static Candle GetLatestCandleForAsset(string symbol)
+        {
+            Candle candle;
+            
+            using(var context = new AppDbContext())
+            {
+                candle = context.Candles.OrderByDescending(c => c.Timestamp).FirstOrDefault();
+            }
+            
+            return candle;
         }
 
         private static void CommitNewCandlesToDb(List<Candle> newCandles)
@@ -57,10 +84,12 @@ namespace App.Services
                     if (existing == null)
                     {
                         context.Candles.Add(newCandle);
+                        UserInterface.Message($"    {newCandle.Id} was added.");
                     }
                 });
 
-                context.SaveChanges();
+                int candles = context.SaveChanges();
+                UserInterface.Message($"{candles} candles were saved to the DB for {newCandles[0].Symbol}.");
             }
         }
 

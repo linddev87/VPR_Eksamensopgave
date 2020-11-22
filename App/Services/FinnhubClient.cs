@@ -6,6 +6,7 @@ using App.Model;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using App.Enums;
+using App.UI;
 
 namespace App.Services
 {
@@ -47,15 +48,27 @@ namespace App.Services
 
             string response = await RequestFinnhubData(url);
 
-            List<Candle> candles = JsonConvert.DeserializeObject<List<Candle>>(response);
+            UserInterface.Message($"Getting candles for {asset.Symbol}");
 
-            candles.ForEach(c => { 
-                c.Symbol = asset.Symbol; 
-                c.SymbolType = asset.AssetType; 
-                c.Resolution = resolution;
-            });
+            try
+            {
+                FinnhubCandleResponse candleResponse = JsonConvert.DeserializeObject<FinnhubCandleResponse>(response);
 
-            return candles;
+                List<Candle> candles = candleResponse.Translate();
+
+                candles.ForEach(c => {
+                    c.Symbol = asset.Symbol;
+                    c.SymbolType = asset.AssetType;
+                    c.Resolution = resolution;
+                });
+
+                return candles;
+            }
+            catch(Exception e)
+            {
+                UserInterface.Message($"Could not get candles for {asset.Symbol}: {e.Message}");
+                return null;
+            }
         }
 
         private async Task<string> RequestFinnhubData(string endpoint)

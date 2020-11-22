@@ -16,8 +16,7 @@ namespace App.UI
 
             string result = action.Run();
 
-            Console.WriteLine(result);
-            Console.WriteLine();
+            UserInterface.Message(result);
 
             Init();
         }
@@ -29,7 +28,6 @@ namespace App.UI
 
         public static string GetUserInput()
         {
-            Console.WriteLine("What would you like to do? (Type 'help' for options)\n");
             return Console.ReadLine();
         }
     }

@@ -1,10 +1,4 @@
-Implement data for AssetReport:
-	Candles
-	NEED NEW DESERIALIZER FOR FINNHUB DATA
-	Better time handling
-
-Define and implement AssetReport
-
 Hide secrets!
+
 Insert try/catch blocks and exceptions!
 Comment everything.

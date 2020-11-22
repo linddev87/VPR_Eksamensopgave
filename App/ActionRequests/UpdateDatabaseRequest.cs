@@ -32,8 +32,6 @@ namespace App.ActionRequests
             {
                 return $"Something went wrong with your request: {e.Message}";
             }
-
-            
         }
     }
 }
