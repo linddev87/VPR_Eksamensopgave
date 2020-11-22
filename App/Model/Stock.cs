@@ -14,6 +14,6 @@ namespace App.Model
         }
         public new AssetType AssetType = AssetType.Stock;
         public string Type { get; private set; }
-        public string Currency { get; private set; }
+        public string Currency { get; set; }
     }
 }

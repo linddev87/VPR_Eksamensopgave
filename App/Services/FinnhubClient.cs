@@ -14,10 +14,17 @@ namespace App.Services
     {
         private static FinnhubClient instance = null;
         private static readonly object padlock = new object();
-        private string ApiKey = "busnc5v48v6vuigkhi40";
+        private string ApiKey { 
+            get
+            {
+                return Environment.GetEnvironmentVariable("VPR_Eksamensopgave_FinnhubApiKey");
+            }
+        }
         private string BaseUrl = "https://finnhub.io/api/v1";
 
-        private FinnhubClient() {}
+        private FinnhubClient() {
+
+        }
 
         public static FinnhubClient Instance
         {

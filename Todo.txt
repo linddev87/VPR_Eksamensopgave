@@ -1,4 +1,3 @@
-Hide secrets!
 
 Insert try/catch blocks and exceptions!
 Comment everything.

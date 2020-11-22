@@ -14,7 +14,8 @@ namespace App.Model
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=tcp:linddev87stockappdb.database.windows.net,1433;Initial Catalog=StockAppDb;Persist Security Info=False;User ID=linddev87;Password=Bond665Villain;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            string connectionString = System.Environment.GetEnvironmentVariable("VPR_Eksamensopgave_ConnectionString");
+            optionsBuilder.UseSqlServer(connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

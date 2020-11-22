@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "App": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Key": "Value",
+        "VPR_Eksamensopgave_ConnectionString": "Server=tcp:linddev87stockappdb.database.windows.net,1433;Initial Catalog=StockAppDb;Persist Security Info=False;User ID=linddev87;Password=Bond665Villain;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+        "VPR_Eksamensopgave_FinnhubApiKey": "busnc5v48v6vuigkhi40"
+      }
+    }
+  }
+}

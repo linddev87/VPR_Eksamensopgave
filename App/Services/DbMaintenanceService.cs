@@ -106,7 +106,7 @@ namespace App.Services
             }
             catch(Exception e)
             {
-                Console.WriteLine(e.Message);
+                UserInterface.Message(e.Message);
                 return false;
             }
         }
@@ -125,29 +125,29 @@ namespace App.Services
                         try
                         {
                             context.Stocks.Add(stock);
-                            Console.WriteLine($"    Added {stock.Id}: {stock.Description}");
+                            UserInterface.Message($"    Added {stock.Id}: {stock.Description}");
                         }
                         catch(Exception e)
                         {
-                            Console.WriteLine($"Failed to add {stock.Id}");
-                            Console.WriteLine($"Error message: {e.Message}");
+                            UserInterface.Message($"Failed to add {stock.Id}");
+                            UserInterface.Message($"Error message: {e.Message}");
                         }
                     }
                     else
                     {
-                        Console.WriteLine($"Skipped {stock.Id}");
+                        UserInterface.Message($"Skipped {stock.Id}");
                     }
                 }
 
                 try
                 {
                     var result = context.SaveChanges();
-                    Console.WriteLine($"Added {result} new stocks");
+                    UserInterface.Message($"Added {result} new stocks");
                 }
                 catch(Exception e)
                 {
-                    Console.WriteLine($"Failed to save changes.");
-                    Console.WriteLine($"Error message: {e.Message}");
+                    UserInterface.Message($"Failed to save changes.");
+                    UserInterface.Message($"Error message: {e.Message}");
                 }
             }
         }

@@ -9,16 +9,23 @@ namespace App.UI
     {
         public static void Init()
         {
-            string input = GetUserInput().ToLower();
-            string[] inputArr = input.Split(" ");
+            try
+            {
+                string input = GetUserInput().ToLower();
+                string[] inputArr = input.Split(" ");
 
-            IActionRequest action = ActionRequestFactory.GetActionRequest(inputArr);
+                IActionRequest action = ActionRequestFactory.GetActionRequest(inputArr);
 
-            string result = action.Run();
+                string result = action.Run();
 
-            UserInterface.Message(result);
+                Message(result);
 
-            Init();
+                Init();
+            } 
+            catch(Exception e)
+            {
+                Message("Something went wrong: " + e.Message);
+            }
         }
 
         internal static void Message(string message)

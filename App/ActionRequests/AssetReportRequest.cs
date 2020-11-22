@@ -72,7 +72,7 @@ namespace App.ActionRequests
 
         public string HeaderString()
         {
-            string headerString = StringResize("Month:");
+            string headerString = StringResize("Month:", 20);
 
             Candle oldestCandle = Candles.OrderBy(c => c.Timestamp).FirstOrDefault();
             DateTime date = oldestCandle.Timestamp;
@@ -105,7 +105,13 @@ namespace App.ActionRequests
 
         private string GetReportString(string symbol, List<decimal> closingAverages)
         {
-            string result = StringResize(symbol.ToUpper());
+            Stock asset;
+            using(var context = new AppDbContext())
+            {
+                asset = (Stock)context.Assets.Where(a => a.Symbol == symbol.ToUpper()).FirstOrDefault();
+            }
+
+            string result = StringResize($"{symbol.ToUpper()}({asset.Currency})", 20);
 
             foreach(var avg in closingAverages)
             {
@@ -115,7 +121,7 @@ namespace App.ActionRequests
             return result;
         }
 
-        private string StringResize(string input, int length = 15 )
+        private string StringResize(string input, int length = 12 )
         {
             string output = "";
             if(input.Length > length)
