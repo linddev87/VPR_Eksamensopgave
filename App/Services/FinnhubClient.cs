@@ -22,7 +22,7 @@ namespace App.Services
                 return Environment.GetEnvironmentVariable("VPR_Eksamensopgave_FinnhubApiKey");
             }
         }
-        private string BaseUrl = "https://finnhub.io/api/v1";
+        private readonly string BaseUrl = "https://finnhub.io/api/v1";
 
         private FinnhubClient()
         {

@@ -26,6 +26,7 @@ namespace App.Factories
                 case "showshortlist":
                     return new ShowShortlistRequest();
                 case "updatedatabase":
+
                     return new UpdateDatabaseRequest();
                 default:
                     return new InvalidRequest();

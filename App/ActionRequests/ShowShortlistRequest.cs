@@ -42,7 +42,7 @@ namespace App.ActionRequests
         /// <returns></returns>
         private string BuildShortlistString(List<Asset> assets)
         {
-            string shortlistString = "";
+            string shortlistString;
 
             if (assets.Count > 0)
             {

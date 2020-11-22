@@ -34,7 +34,7 @@ namespace App.ActionRequests
         /// <returns>string containing the found assets</returns>
         private string GetResultString()
         {
-            string output = "";
+            string output;
             try
             {
                 List<Asset> assets = LookupAssets();
