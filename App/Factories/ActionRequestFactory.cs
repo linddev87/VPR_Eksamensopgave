@@ -1,12 +1,12 @@
 ﻿using App.ActionRequests;
 using App.Controllers;
 using App.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Factories
 {
+    /// <summary>
+    /// The ActionRequestFactory returns an IActionRequest based on the users input. See the relevant ActionRequests for further info.
+    /// </summary>
     public static class ActionRequestFactory
     {
         public static IActionRequest GetActionRequest(string[] inputArr)
@@ -31,6 +31,12 @@ namespace App.Factories
                     return new InvalidRequest();
             }
         }
+
+        /// <summary>
+        /// Separates the users command from the arguments and returns only the arguments
+        /// </summary>
+        /// <param name="inputArr">The input array collected in the UserInterface.</param>
+        /// <returns>string array</returns>
         public static string[] GetParams(string[] inputArr)
         {
             string[] parameters = new string[inputArr.Length - 1];

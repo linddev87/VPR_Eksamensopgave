@@ -1,11 +1,14 @@
 ﻿using App.Interfaces;
-using System;
 
 namespace App.ActionRequests
 {
-    internal class HelpRequest : IActionRequest
+    /// <summary>
+    /// Implementation of IActionRequest to handle 'help' commands.
+    /// Very generic at present - can be expanded to handle more specific help requests.
+    /// </summary>
+    public class HelpRequest : IActionRequest
     {
-        public string[] Params { get; private set; }
+        private string[] Params { get; set; }
 
         public HelpRequest()
         {
@@ -22,8 +25,13 @@ namespace App.ActionRequests
             return GetHelpString();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Help information for the given 'help' command.</returns>
         private string GetHelpString()
         {
+            // The idea is to add more specific help items at a later point if the user has supplied arguments to the help command. 
             if(Params.Length > 1)
             {
                 return $"We couldn't find a specific help item for '{Params[1]}'. Type 'help' for a list of options.";

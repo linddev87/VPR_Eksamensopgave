@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace App.ActionRequests
 {
+    /// <summary>
+    /// Call the DbMaintenanceService methods required to update the database with the current shortlist
+    /// </summary>
     class UpdateDatabaseRequest : IActionRequest
     {
         public UpdateDatabaseRequest()

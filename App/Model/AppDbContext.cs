@@ -6,6 +6,9 @@ using System.Text;
 
 namespace App.Model
 {
+    /// <summary>
+    /// Defined the AppDbContext used by EF Core
+    /// </summary>
     public partial class AppDbContext : DbContext
     {
         public DbSet<Asset> Assets { get; set; }

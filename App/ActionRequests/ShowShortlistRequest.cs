@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace App.ActionRequests
 {
+    /// <summary>
+    /// Used to get the list of currently shortlisted assets.
+    /// </summary>
     class ShowShortlistRequest : IActionRequest
     {
         public string[] Params { get; private set; }
@@ -19,6 +22,9 @@ namespace App.ActionRequests
             return GetShortlistString();
         }
 
+        /// <summary>
+        /// Find the shortlisted assets and return a string representation of the list.
+        /// </summary>
         private string GetShortlistString()
         {
             AppDbContext context = new AppDbContext();
@@ -29,6 +35,11 @@ namespace App.ActionRequests
             return shortlistString;
         }
 
+        /// <summary>
+        /// Build the actual string to return to the presentation layer.
+        /// </summary>
+        /// <param name="assets"></param>
+        /// <returns></returns>
         private string BuildShortlistString(List<Asset> assets)
         {
             string shortlistString = "";

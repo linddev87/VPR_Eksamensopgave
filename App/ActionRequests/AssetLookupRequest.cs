@@ -1,16 +1,17 @@
 ﻿using App.Interfaces;
 using App.Model;
-using App.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace App.ActionRequests
 {
+    /// <summary>
+    /// Simple class used to query the Assets context for an Asset which has a description matching the user input.
+    /// </summary>
     internal class AssetLookupRequest : IActionRequest
     {
-        public string[] Params { get; private set; }
+        private string[] Params { get; set; }
 
         public AssetLookupRequest()
         {
@@ -27,19 +28,35 @@ namespace App.ActionRequests
             return GetResultString();
         }
 
+        /// <summary>
+        /// Build a string to show the queried assets in the presentation layer
+        /// </summary>
+        /// <returns>string containing the found assets</returns>
         private string GetResultString()
         {
-            List<Asset> assets = LookupAssets();
             string output = "";
-
-            foreach(var asset in assets)
+            try
             {
-                output += $"{asset.Description} ({asset.Symbol}) \n";
+                List<Asset> assets = LookupAssets();
+                output = "";
+
+                foreach (var asset in assets)
+                {
+                    output += $"{asset.Description} ({asset.Symbol}) \n";
+                }
+            }
+            catch(Exception e)
+            {
+                output = "Something went wrong" + e.Message;
             }
 
             return output;
         }
 
+        /// <summary>
+        /// Uses Linq to find assets with a description containing the user input.
+        /// </summary>
+        /// <returns>A list of matching assets</returns>
         private List<Asset> LookupAssets()
         {
             List<Asset> assets = new List<Asset>();

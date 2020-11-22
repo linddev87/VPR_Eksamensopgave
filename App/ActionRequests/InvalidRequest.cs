@@ -3,9 +3,12 @@ using System;
 
 namespace App.Controllers
 {
+    /// <summary>
+    /// Used whenever the user inputs something that we don't have a better option for.
+    /// </summary>
     public class InvalidRequest : IActionRequest
     {
-        public string[] Params { get; private set; }
+        private string[] Params { get; set; }
         public InvalidRequest()
         {
 
