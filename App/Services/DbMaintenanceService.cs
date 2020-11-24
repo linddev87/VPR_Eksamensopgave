@@ -65,9 +65,12 @@ namespace App.Services
                 from = ConvertToUnix(latestCandle.Timestamp);
             }
 
-            List<Candle> newCandles = await FinnhubClient.Instance.GetCandlesForSymbol(asset, from, to);
+            if (from < ConvertToUnix(DateTime.UtcNow.AddDays(-1)))
+            {
+                List<Candle> newCandles = await FinnhubClient.Instance.GetCandlesForSymbol(asset, from, to);
 
-            CommitNewCandlesToDb(newCandles);
+                CommitNewCandlesToDb(newCandles);
+            }
         }
 
         /// <summary>

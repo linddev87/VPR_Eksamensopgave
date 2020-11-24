@@ -81,12 +81,15 @@ namespace App.Services
 
                 List<Candle> candles = candleResponse.Translate();
 
-                candles.ForEach(c =>
+                if(candles.Count > 0)
                 {
-                    c.Symbol = asset.Symbol;
-                    c.SymbolType = asset.AssetType;
-                    c.Resolution = resolution;
-                });
+                    candles.ForEach(c =>
+                    {
+                        c.Symbol = asset.Symbol;
+                        c.SymbolType = asset.AssetType;
+                        c.Resolution = resolution;
+                    });
+                }
 
                 return candles;
             }

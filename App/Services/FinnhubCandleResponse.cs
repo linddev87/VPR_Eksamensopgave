@@ -1,5 +1,7 @@
 ﻿using App.Model;
+using App.UI;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace App.Services
@@ -24,16 +26,28 @@ namespace App.Services
 
         internal List<Candle> Translate()
         {
-            List<Candle> candles = new List<Candle>();
-
-            for (int i = 0; i < ClosingPrice.Length; i++)
+            try
             {
-                Candle candle = new Candle(OpenPrice[i], HighestPrice[i], LowestPrice[i], ClosingPrice[i], Volume[i], Timestamp[i]);
+                List<Candle> candles = new List<Candle>();
 
-                candles.Add(candle);
+                if(ClosingPrice != null)
+                {
+                    for (int i = 0; i < ClosingPrice.Length; i++)
+                    {
+                        Candle candle = new Candle(OpenPrice[i], HighestPrice[i], LowestPrice[i], ClosingPrice[i], Volume[i], Timestamp[i]);
+
+                        candles.Add(candle);
+                    }
+                }
+
+
+                return candles;
+            } catch(Exception e)
+            {
+                UserInterface.Message($"Something went wrong when attempting to translate the response from Finnub: {e.Message}");
+                return null;
             }
 
-            return candles;
         }
     }
 }
