@@ -7,7 +7,7 @@ namespace App
     class Program
     {
         /// <summary>
-        /// 
+        /// Initiate the "user interface"
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
