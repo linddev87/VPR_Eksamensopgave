@@ -8,3 +8,4 @@ The application consumes the Finnhub API to get day-to-day information on openin
 
 The app uses EntityFramework to maintain collected data in an MSSQL database. 
 
+The presentation layer consists of a simple console UI which uses a factory to determine which ActionRequest to run based on the user's input. 
